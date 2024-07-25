@@ -1,4 +1,4 @@
-import express from "express";
+import express, { urlencoded } from "express";
 import dotenv from "dotenv";
 import { connectDB } from "./model/dbConnection.js";
 import { router } from "./routes/userRoutes.js";
@@ -9,6 +9,7 @@ connectDB();
 // console.log(moment())
 const app = express();
 app.use(express.json());
+app.use(urlencoded());
 app.use(router);
 
 const PORT = process.env.PORT || 3000;
